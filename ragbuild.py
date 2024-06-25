@@ -35,17 +35,14 @@ index2=VectorStoreIndex.from_documents(documents2)
 query_engine2=index2.as_query_engine()
 
 
-
-
-
-# response= query_engine.query(
-#     "What is the total amount of the Canadian Federal budget"
-# )
-# print(response)
-# response = query_engine.query(
-#     "How much exactly was allocated to a tax credit to promote investment in green technologies in the 2023 Canadian federal budget?"
-# )
-# print(response)
+response= query_engine.query(
+    "What is the total amount of the Canadian Federal budget"
+)
+print(response)
+response = query_engine.query(
+    "How much exactly was allocated to a tax credit to promote investment in green technologies in the 2023 Canadian federal budget?"
+)
+print(response)
 
 response2=query_engine2.query(
         "How much exactly was allocated to a tax credit to promote investment in green technologies in the 2023 Canadian federal budget?"
@@ -61,7 +58,14 @@ agent= ReActAgent.from_tools(
     [multiply_tool, add_tool, budget_tool], verbose=True
 )
 
-response=agent.chat(
-    "What is the total amount of the 2023 Canadian federal budget multiplied by 3? Go step by step, using a tool to do any math."
-)
+response = agent.chat("How much exactly was allocated to a tax credit to promote investment in green technologies in the 2023 Canadian federal budget?")
+
+print(response)
+
+response = agent.chat("How much was allocated to a implement a means-tested dental care program in the 2023 Canadian federal budget?")
+
+print(response)
+
+response = agent.chat("How much was the total of those two allocations added together? Use a tool to answer any questions.")
+
 print(response)
